@@ -524,6 +524,7 @@ if (NGRAPH_TEST_UTIL_ENABLE)
 endif()
 
 add_subdirectory(test)
+add_subdirectory(benchmarks)
 
 if (NGRAPH_PYTHON_BUILD_ENABLE)
     add_subdirectory(python)
