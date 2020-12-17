@@ -14,7 +14,7 @@ conan_cmake_run(CONANFILE conanfile.txt
                 BUILD missing)
 
 # 
-add_executable(ng_bench ref_impls.cpp)
+add_executable(ng_bench range.cpp convolution.cpp)
 target_link_libraries(ng_bench PRIVATE CONAN_PKG::benchmark
                                         ngraph_test_util
                                         ngraph
