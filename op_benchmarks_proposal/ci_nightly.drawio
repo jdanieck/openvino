@@ -1,0 +1,126 @@
+<mxfile>
+    <diagram id="gC7zrj4iG1PqGOvEpGPq" name="Page-1">
+        <mxGraphModel dx="804" dy="693" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="66" value="" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fillColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="10" width="690" height="570" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="150" width="20" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="3" vertex="1">
+                    <mxGeometry x="5" y="150" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="build benchmark binary" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" parent="3" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="10" y="130" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="40" y="130"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="3" vertex="1">
+                    <mxGeometry x="5" y="220" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="execute benchmarks binary" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=1;entryY=0;" parent="3" target="28" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="10" y="200" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="40" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="CI job (nightly)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="100" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="140" width="40" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Github" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="105" width="45" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+                    <mxGeometry x="495" y="240" width="10" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="checkout&amp;nbsp; master branch" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" parent="1" target="13" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="280" y="240" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" parent="1" source="13" target="3" edge="1">
+                    <mxGeometry x="-0.4286" y="-16" relative="1" as="geometry">
+                        <mxPoint x="280" y="316" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="595" y="140" width="40" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Database" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="110" width="45" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="upload Master benchmarks results&amp;nbsp;" style="html=1;verticalAlign=bottom;endArrow=block;" parent="1" source="3" target="30" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="540" y="430" as="sourcePoint"/>
+                        <mxPoint x="520" y="430" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="430" y="430"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="CI nightly / visualization" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="205" y="20" width="290" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="shape=umlLifeline;participant=umlEntity;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="150" width="40" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="51" vertex="1">
+                    <mxGeometry x="15" y="320" width="10" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="Kibana" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="120" width="45" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="150" width="20" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="User" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="120" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="open visualization webpage" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;" parent="1" source="53" target="57" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="115" y="470" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="59" value="" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;" parent="1" source="57" target="53" edge="1">
+                    <mxGeometry x="-0.1235" y="-46" relative="1" as="geometry">
+                        <mxPoint x="115" y="546" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="500" width="10" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;exitX=0.7;exitY=0.28;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="57" target="61" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="540" y="470" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="64" value="request benchmarks archived data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="62" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0718" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="63" value="" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;entryX=0.6;entryY=0.69;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="61" target="57" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="540" y="546" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.985;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="66" target="66">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
