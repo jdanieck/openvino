@@ -1,0 +1,21 @@
+2021-06-22T13:23:32+02:00
+Running ./inference-engine/tests/op_benchmarks/bin/op_benchmarks
+Run on (96 X 2394.38 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x96)
+  L1 Instruction 32 KiB (x96)
+  L2 Unified 1024 KiB (x96)
+  L3 Unified 36608 KiB (x96)
+Load Average: 0.06, 0.20, 0.34
+---------------------------------------------------------------------------------------------
+Benchmark                                                   Time             CPU   Iterations
+---------------------------------------------------------------------------------------------
+convolution_2D_reference_mean                            8444 us         8443 us           10
+convolution_2D_reference_median                          8427 us         8427 us           10
+convolution_2D_reference_stddev                          54.0 us         52.7 us           10
+convolution_2D_plugin<DeviceType::TEMPLATE>_mean         7360 us         7360 us           10
+convolution_2D_plugin<DeviceType::TEMPLATE>_median       7332 us         7331 us           10
+convolution_2D_plugin<DeviceType::TEMPLATE>_stddev       78.0 us         77.9 us           10
+convolution_2D_plugin<DeviceType::CPU>_mean               619 us          618 us           10
+convolution_2D_plugin<DeviceType::CPU>_median             613 us          612 us           10
+convolution_2D_plugin<DeviceType::CPU>_stddev            21.5 us         21.4 us           10
