@@ -14,7 +14,7 @@
 - Visualization will enable us to understand long-term trend of operation performance
 
 ## IE infrastructure code (variant 1)
- [This](https://github.com/jdanieck/openvino/compare/master...convolution_benchmarks) approach is based on cmake target intruduction which will build new benchmarks binary. Implementation is based on [Google Benchmark](https://github.com/google/benchmark) library which is mature off-the-shelf product.
+ [This](https://github.com/openvinotoolkit/openvino/pull/6325) approach is based on cmake target intruduction which will build new benchmarks binary. Implementation is based on [Google Benchmark](https://github.com/google/benchmark) library which is mature off-the-shelf product.
 ### Pros
 - google benchmarks is well tested, which mean less bugs in 'infrastructure' code
 - google benchmarks has copmprehensive [documentation](https://github.com/google/benchmark#user-guide), which mean easy onboarding for new engineers
@@ -55,7 +55,7 @@ convolution_2D_plugin<DeviceType::CPU>_stddev            21.5 us         21.4 us
 ```
 
 ### Resources:
-- [Code](https://github.com/jdanieck/openvino/compare/master...convolution_benchmarks)
+- [Code](https://github.com/openvinotoolkit/openvino/pull/6325)
 - [Results JSON](approach1_results.json)
 - [Results TXT](approach1_results.txt)
 
