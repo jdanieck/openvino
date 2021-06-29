@@ -1,9 +1,12 @@
 # Operations benchmarking POC
 
-## Goals
-- **produce Single Performance Indicator (SPI) per each operation implementation (per OpenVINO plugin)** - the idea is to have simple metric for distinc op performance (not "100" measurements which will be hard to draw meaningfull conclusions from)
-- **produce CI pre-commit job with warning about performance degradation** - doing 'benchmarking' is tricky, espacially in CI where we are not sure if benchmarks where executed in the same conditions every time (e.g. the same machine, no external CPU load), so pre-commit shouldn't block merges, just indicate with warning that there is possiblity of degradation (which would be analyzed by human reviewers)
-- **visualize SPI trend in master over time** - it will allow to ensure that performance is not degrading slowly by simmingly not related changes in other parts of IE/ngraph
+## Problem
+Engineers working on operation performance do not have a common way to measure and quantify performance. Different tools are used (VTune, gbenchmark, ad hoc solutions) or performance is not mesured at all.
+## Proposal
+- **produce Operations Performance Indicator (OPI) per each operation implementation (per OpenVINO plugin)** - the idea is to have simple metric for distinc op performance (not "100" measurements which will be hard to draw meaningfull conclusions from)
+- **produce CI pre-commit job with warning about performance degradation** - it will enable us to detect early unintended performance degradation
+- **[optional] produce weekly OPI report** - it will provide textual view on operations performance on week to week basis  
+- **[optional] visualize OPI trend in master over time** - it will provide graphical view on operations performance in longer time period
 
 ## Users
 - Intel engineers working on OpenVINO operations performance (private access)
@@ -11,7 +14,7 @@
 ## Benefits
 - Engineers working on performance optimizations will have standarized way to quantify performance improvements for distinct operations
 - Automated CI checks to detect performance degradation
-- Visualization will enable us to understand long-term trend of operation performance
+- [optional] reporting & visualization will enable us to understand long-term trend of operation performance
 
 ## IE infrastructure code (variant 1)
  [This](https://github.com/openvinotoolkit/openvino/pull/6325) approach is based on cmake target intruduction which will build new benchmarks binary. Implementation is based on [Google Benchmark](https://github.com/google/benchmark) library which is mature off-the-shelf product.
@@ -53,7 +56,18 @@ convolution_2D_plugin<DeviceType::CPU>_median             613 us          612 us
 convolution_2D_plugin<DeviceType::CPU>_stddev            21.5 us         21.4 us           10
 
 ```
+### Naming convention
+Benchmarks names should follow name convention to be able to run specific subset of tests in CI (e.g. slow benchmarks shouldn't be executed in pre-commit). Naming convention follows what is in use in SLTs. 
+#### Fast benchmarks
+Fast benchmarks should execute in less than 30 seconds.
 
+Name template: **smoke_OperationName_Version_BenchmarkDetails**   
+Example: *smoke_Convolution_1_InputShape1x1x32x32*
+#### Slow benchmarks
+Slow benchmarks do not meet 'fast benchnmarks' speed criteria.
+
+Name template: **nightly_OperationName_Version_BenchmarkDetails**  
+Example: *smoke_Convolution_1_InputShape1x1x1024x1024*  
 ### Resources:
 - [Code](https://github.com/openvinotoolkit/openvino/pull/6325)
 - [Results JSON](approach1_results.json)
@@ -111,18 +125,35 @@ For smoke_Convolution2D/ConvConcatSubgraphTest/CompareWithRefs_Type_Convolution_
 ## CI implementation
 **This part was not POC yet**. To be done when decided which IE benchmarking infrastructure implementation variant is the "winner".
 
-*Kibana/Elasticsearch basic functionality is free of charge. I've consulted with colleague from VPU Validation and they have production experience with this tool so we can borrow BKMs from them.*
+### pre-commit warning
+Why warning and not error?
+- we can conciously decide that we want some change which will degrade performance - it is OK, the point is to avoid **unintended** performance degradation, so we should allow merge in this case
+- doing 'benchmarking' is tricky, espacially in CI where we are not sure if benchmarks where executed in the same conditions every time (e.g. the same machine, no external CPU load), so in case of flagged PR human should review and decide if this is a real issue
+
+Assumptions:
+- it is costly to build benchmarks target; hence we will cache benchmarks results from master branch to not build it on every pre-commit
+
+To be considered
+- what technology use for Datastore (shared filesystem? database?)
+- backup policy for Datastore
+- how to schedule CI job so we have repeatable benchmark results; ideally it would be dedicated machine
+- should this job be triggered automatically on every PR or on users request
+
+![ci_precommit diagram](ci_precommit.svg)
+
+### [optional] weekly OPI report / OPI trend visualization
+Additional optional improvements are *weekly reports* and *visualization*. Weekly reports are already a practice in OpenVINO so it could be extended to include also operations benchmarks. Visualization of metrics is to be developed from scratch as there is no such solution present (at least the author is not aware of it).
+
+[Kibana](https://www.elastic.co/kibana)/[Elasticsearch](https://www.elastic.co/elasticsearch/)* is proposed as a out of the box solution to provide metrics visualization. It could be also used in the future to visualize other metrics, e.g. ngraph library size over time. The caveat is that it is a complex tool to learn so it's usage should be evaluated in the context of devops team skillset (assuming they will implement it). Other similiar tools also exist and could be used insetad, the point is to use some out-of-the-box solution.   
+
+**Kibana/Elasticsearch basic functionality is free of charge. I've consulted with colleague from VPU Validation and they have production experience with this tool so we can borrow BKMs from them.*
 
 ### To be considered
-- how to manage access to Visualization tool (Kibana)
-- how to backup database
-- how to schedule CI job so we have repeatable benchmark results; ideally it would be dedicated machine (no other CPU load)
-- how to deploy ELK stack? hosted in devops lab (no costs) or IT provided service (paid) ?
+- which Visualization tool is going to be used, Kibana or some other tool?
+- how to manage access to Visualization tool
+- how to deploy Visualization tool ? hosted in devops lab (no costs) or IT provided service (paid) ?
+- do we need some additional preprocessing scripts to adjust data for visualization / reporting
 
-### Resources
-- [Kibana](https://www.elastic.co/kibana) as a visualization tool      
-- [Elasticsearch](https://www.elastic.co/elasticsearch/) as a database
-
-### Sequence diagrams
-![ci_precommit diagram](ci_precommit.svg)
 ![ci_nightly diagram](ci_nightly.svg)
+
+
